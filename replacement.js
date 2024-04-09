@@ -45,12 +45,14 @@ export async function replaceStatement(sourceCode, options = {}) {
           newStatement = "";
         } else if (/^import/.test(oldStatement.trim())) {
           // import { foo } from './foo.client.js';                =>    const { foo } = Object.create(null);
+          // import foo from './foo.client.js';                    =>    const foo = Object.create(null);
           // import * as foo from './foo.client.js';               =>    const foo = Object.create(null);
           // import { foo as fooClient } from './foo.client.js';   =>    const { foo: fooClient } = Object.create(null);
           const [statement] = oldStatement.split("from");
           newStatement = statement.replace(/import(\s*\*\s*as)?/, "const").replace(/\sas\s/g, ": ") + "= Object.create(null)";
         } else if (/^export/.test(oldStatement.trim())) {
           // export { foo } from './foo.client.js';                =>    export const { foo } = Object.create(null);
+          // export foo from './foo.client.js';                    =>    export const foo = Object.create(null);
           // export * as foo from './foo.client.js';               =>    export const foo = Object.create(null);
           // export { foo as fooClient } from './foo.client.js';   =>    export { foo: fooClient } = Object.create(null);
           const [statement] = oldStatement.split("from");
