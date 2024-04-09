@@ -9,7 +9,7 @@ import { replaceStatement } from "./replacement";
  */
 function conditionalImportPlugin(options) {
   return {
-    name: "vite-plugin-condition-import",
+    name: "vite-plugin-conditional-import",
     enforce: "post",
     async transform(code, id, opts) {
       const result = await replaceStatement(code, options);
