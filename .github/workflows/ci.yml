@@ -22,7 +22,7 @@ jobs:
         run: npm run test
   release:
     name: Release to Github
-    if: startsWith(github.ref, 'refs/tags/') && github.repository == 'axetroy/swagger2ts'
+    if: startsWith(github.ref, 'refs/tags/') && github.repository == 'axetroy/vite-plugin-conditional-import'
     needs: [test]
     runs-on: ubuntu-latest
     steps:
