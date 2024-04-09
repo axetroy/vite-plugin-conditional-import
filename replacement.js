@@ -21,7 +21,9 @@ export async function replaceStatement(sourceCode, options = {}) {
 
   for (const i of imports) {
     // Ignore if no name or is dynamic import
-    if (!i.n || i.d !== -1) continue;
+    const oldStatement = sourceCode.substring(i.ss, i.se);
+
+    if (!i.n) continue;
 
     // if import match the env
     if (options.currentEnv && envs.some((v) => v.test(i.n))) {
@@ -29,8 +31,11 @@ export async function replaceStatement(sourceCode, options = {}) {
 
       // if not current env, replace import statement with empty object
       if (!isCurrentEnv) {
-        const oldStatement = sourceCode.substring(i.ss, i.se);
-        if (/^import/.test(oldStatement.trim())) {
+        if (/^import\(/.test(oldStatement.trim())) {
+          // import('./foo.client.js')                             =>    Promise.resolve(Object.create(null))
+          const newStatement = "Promise.resolve(Object.create(null))";
+          s().overwrite(i.ss, i.se, newStatement);
+        } else if (/^import/.test(oldStatement.trim())) {
           // import { foo } from './foo.client.js';                =>    const { foo } = Object.create(null);
           // import * as foo from './foo.client.js';               =>    const foo = Object.create(null);
           // import { foo as fooClient } from './foo.client.js';   =>    const { foo: fooClient } = Object.create(null);
