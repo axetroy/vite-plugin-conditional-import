@@ -6,6 +6,12 @@ This plug-in uses the file name to determine which files need to be imported. Th
 
 eg. client import `foo.client.js`, server import `foo.server.js`
 
+### Feature
+
+- [x] Support for importing files based on the environment
+- [x] Support static import
+- [x] Support dynamic import
+
 ### Install
 
 ```bash
