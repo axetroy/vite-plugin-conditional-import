@@ -6,6 +6,12 @@ This plug-in uses the file name to determine which files need to be imported. Th
 
 eg. client import `foo.client.js`, server import `foo.server.js`
 
+### Install
+
+```bash
+npm install vite-plugin-conditional-import --save-dev -D
+```
+
 ### Usage
 
 ```js
