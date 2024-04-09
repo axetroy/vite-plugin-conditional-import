@@ -15,6 +15,9 @@ jobs:
         with:
           node-version: 18
 
+      - name: Install
+        run: npm install
+
       - name: Test
         run: npm run test
   release:
@@ -22,14 +25,14 @@ jobs:
     if: startsWith(github.ref, 'refs/tags/') && github.repository == 'axetroy/swagger2ts'
     needs: [test]
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        deno: ["v1.x"]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 18
+
+      - name: Install
+        run: npm install
 
       - name: Bump version
         env:
