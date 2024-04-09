@@ -23,6 +23,8 @@ export async function replaceStatement(sourceCode, options = {}) {
     // Ignore if no name or is dynamic import
     const oldStatement = sourceCode.substring(i.ss, i.se);
 
+    const disableComment = `/** ${oldStatement} */`;
+
     if (!i.n) continue;
 
     // if import match the env
@@ -31,26 +33,32 @@ export async function replaceStatement(sourceCode, options = {}) {
 
       // if not current env, replace import statement with empty object
       if (!isCurrentEnv) {
+        /** @type {string | undefined} */
+        let newStatement;
+
         if (/^import\(/.test(oldStatement.trim())) {
           // import('./foo.client.js')                             =>    Promise.resolve(Object.create(null))
-          const newStatement = "Promise.resolve(Object.create(null))";
+          newStatement = `Promise.resolve(Object.create(null))`;
           s().overwrite(i.ss, i.se, newStatement);
+        } else if (/^import\s*['|"]/.test(oldStatement.trim())) {
+          // import './foo.client.js';                             =>    ''
+          newStatement = "";
         } else if (/^import/.test(oldStatement.trim())) {
           // import { foo } from './foo.client.js';                =>    const { foo } = Object.create(null);
           // import * as foo from './foo.client.js';               =>    const foo = Object.create(null);
           // import { foo as fooClient } from './foo.client.js';   =>    const { foo: fooClient } = Object.create(null);
           const [statement] = oldStatement.split("from");
-          const newStatement = statement.replace(/import(\s*\*\s*as)?/, "const").replace(/\sas\s/g, ": ") + "= Object.create(null)";
-
-          s().overwrite(i.ss, i.se, newStatement);
+          newStatement = statement.replace(/import(\s*\*\s*as)?/, "const").replace(/\sas\s/g, ": ") + "= Object.create(null)";
         } else if (/^export/.test(oldStatement.trim())) {
           // export { foo } from './foo.client.js';                =>    export const { foo } = Object.create(null);
           // export * as foo from './foo.client.js';               =>    export const foo = Object.create(null);
           // export { foo as fooClient } from './foo.client.js';   =>    export { foo: fooClient } = Object.create(null);
           const [statement] = oldStatement.split("from");
-          const newStatement = statement.replace(/export(\s*\*\s*as)?/, "export const").replace(/\sas\s/g, ": ") + "= Object.create(null)";
+          newStatement = statement.replace(/export(\s*\*\s*as)?/, "export const").replace(/\sas\s/g, ": ") + "= Object.create(null)";
+        }
 
-          s().overwrite(i.ss, i.se, newStatement);
+        if (typeof newStatement === "string") {
+          s().overwrite(i.ss, i.se, newStatement === "" ? disableComment : disableComment + " " + newStatement);
         }
       }
     }

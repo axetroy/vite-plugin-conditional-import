@@ -1,1 +1,1 @@
-const fooPromise = await Promise.resolve(Object.create(null));
+const fooPromise = await /** import("./foo.client.js") */ Promise.resolve(Object.create(null));

@@ -1,1 +1,1 @@
-const foo = Object.create(null);
+/** import foo from "./foo.client.js" */ const foo = Object.create(null);

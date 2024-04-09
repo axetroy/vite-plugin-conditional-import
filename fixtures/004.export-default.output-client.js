@@ -1,2 +1,2 @@
 export * as fooClient from "./foo.client.js";
-export const fooServer = Object.create(null);
+/** export * as fooServer from "./foo.server.js" */ export const fooServer = Object.create(null);
