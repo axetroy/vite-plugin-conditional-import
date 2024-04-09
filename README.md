@@ -1,6 +1,6 @@
 [![Build Status](https://github.com/axetroy/vite-plugin-conditional-import/workflows/ci/badge.svg)](https://github.com/axetroy/vite-plugin-conditional-import/actions)
 
-A vite plugin that allows you to conditionally import modules. inspired by [vite-plugin-iso-import](https://github.com/bluwy/vite-plugin-iso-import).
+A vite plugin that allows you to conditionally import modules. inspired by [vite-plugin-iso-import](https://github.com/bluwy/vite-plugin-iso-import) and discuss at [Environment-specific imports](https://github.com/vitejs/vite/discussions/4172).
 
 This plug-in uses the file name to determine which files need to be imported. The file name must be in the format `filename.env.js`, where `env` is the environment name.
 
