@@ -1,7 +1,7 @@
 import { Plugin } from "vite";
 
 export interface ViteConditionalImportPluginOptions {
-  currentEnv: string;
+  currentEnv: string | string[];
   envs: string[];
 }
 

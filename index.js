@@ -3,7 +3,7 @@ import { replaceStatement } from "./replacement.js";
 /**
  * Conditional import modules
  * @param {Object} options
- * @param {string} [options.currentEnv]
+ * @param {string | []string} [options.currentEnv]
  * @param {string[]} [options.envs]
  * @returns {import('vite').Plugin}
  */
