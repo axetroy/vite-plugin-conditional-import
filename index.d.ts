@@ -7,7 +7,7 @@ export interface ViteConditionalImportPluginOptions {
 
 type ViteConditionalImportPlugin = (options: ViteConditionalImportPluginOptions) => Plugin;
 
-declare const viteConditionalImportPlugin: ViteConditionalImportPlugin;
+declare const conditionalImport: ViteConditionalImportPlugin;
 
-export { viteConditionalImportPlugin };
-export default viteConditionalImportPlugin;
+export { conditionalImport };
+export default conditionalImport;

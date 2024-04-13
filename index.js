@@ -7,7 +7,7 @@ import { replaceStatement } from "./replacement.js";
  * @param {string[]} [options.envs]
  * @returns {import('vite').Plugin}
  */
-function conditionalImportPlugin(options) {
+function conditionalImport(options) {
   return {
     name: "vite-plugin-conditional-import",
     enforce: "post",
@@ -23,5 +23,5 @@ function conditionalImportPlugin(options) {
   };
 }
 
-export { conditionalImportPlugin };
-export default conditionalImportPlugin;
+export { conditionalImport };
+export default conditionalImport;

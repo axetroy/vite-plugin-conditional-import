@@ -2,7 +2,7 @@ import test from "node:test";
 import fs from "node:fs/promises";
 import assert from "node:assert";
 
-import { replaceStatement } from "./replacement.js";
+import { replaceStatement } from "./replacement.mjs";
 
 test("replaceStatement", async (t) => {
   const items = (await fs.readdir("./fixtures")).filter((v) => /\.input\.js$/.test(v));
