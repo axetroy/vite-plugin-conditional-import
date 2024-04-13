@@ -1,4 +1,4 @@
-import { replaceStatement } from "./replacement.js";
+import { replaceStatement } from "./replacement.mjs";
 
 /**
  * Conditional import modules
