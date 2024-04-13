@@ -1,4 +1,5 @@
 [![Build Status](https://github.com/axetroy/vite-plugin-conditional-import/workflows/ci/badge.svg)](https://github.com/axetroy/vite-plugin-conditional-import/actions)
+[![996.icu](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu)
 
 A vite plugin that allows you to conditionally import modules. inspired by [vite-plugin-iso-import](https://github.com/bluwy/vite-plugin-iso-import) and discuss at [Environment-specific imports](https://github.com/vitejs/vite/discussions/4172).
 
@@ -54,4 +55,4 @@ see example [here](playground/native)
 
 ## License
 
-The [MIT License](LICENSE)
+The [Anti 996 License](https://github.com/axetroy/vite-plugin-conditional-import/blob/master/LICENSE)
