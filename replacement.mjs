@@ -7,7 +7,7 @@ import { init, parse } from "es-module-lexer";
  * @param {Object} options
  * @param {string | []string} [options.currentEnv]
  * @param {string[]} [options.envs]
- * @returns {Promise<{code: string, map: string} | string>}
+ * @returns {Promise<import('rollup').TransformResult>}
  */
 export async function replaceStatement(sourceCode, options = {}) {
   await init;
