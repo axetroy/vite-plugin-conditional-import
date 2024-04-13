@@ -4,6 +4,7 @@
   "description": "A vite plugin that allows you to conditionally import modules",
   "main": "index.js",
   "type": "module",
+  "typings": "index.d.ts",
   "scripts": {
     "test": "node --test"
   },
