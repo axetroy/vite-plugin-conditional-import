@@ -19,8 +19,9 @@
     "README.md",
     "LICENSE",
     "index.js",
+    "index.cjs",
     "index.d.ts",
-    "replacement.js"
+    "replacement.mjs"
   ],
   "repository": {
     "type": "git",
