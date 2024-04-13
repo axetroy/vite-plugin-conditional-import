@@ -16,7 +16,7 @@ eg. client import `foo.client.js`, server import `foo.server.js`
 ### Install
 
 ```bash
-npm install vite-plugin-conditional-import --save-dev -D
+npm install vite-plugin-conditional-import --save-exact -D
 ```
 
 ### Usage
